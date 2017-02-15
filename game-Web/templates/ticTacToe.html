@@ -1,212 +1,22 @@
-
-<script>
-
-        var p1gameswon = 0;
-        var p2gameswon = 0;
-        var tied = 0;
-        var winner = "";
-        var clickedArray = [];
-        var clicksCount = 0;
-        var id = 0;
-        var value = 0;
-        var winArray = [7, 56, 84, 146, 273, 448, 273, 73];
-        var currentMarker = "X";
-        var playerXscore = 0;
-        var playerOscore = 0;
-//        var player1name = prompt("Enter Player 1's Name");
-//        var player2name = prompt("Enter Player 2's Name");
-//        document.write("<h2 style=' font: bold '>" + player1name + " VS " + player2name);
-//        document.getElementById("p1info").innerHTML = player1name + " is " + '<img src = "ov2.png" style ="height:70px; width: 90px" />';
-//        document.getElementById("p2info").innerHTML = player2name + " is " + '<img src = "ov2.png" style ="height:70px; width: 90px" />';
-//        var currentplayer = player1name;
-
-
-        function playerMove(id, value) {
-            
-            if (id.innerHTML !== "[]") {
-               
-                alert("Please Choose a different square");
-                throw new Error("OPPPSSS");
-
-            }
-
-            changeText(id);
-            updateScore(value);
-
-            if (id.innerHTML === "") {
-                changeText(id);
-                updateScore(value);
-            }
-            if (currentMarker === "X") {
-                check4winner(playerXscore);
-            }
-            else
-            {
-                check4winner(playerOscore);
-            }
-            if (winner !== "") {
-                alert("Winner: " + currentplayer);
-
-                document.getElementById("winnerTEXT").innerHTML = currentplayer + " Won the round";
-                if (currentMarker === "X") {
-                    document.getElementById("p1win").innerHTML = currentplayer + " Won " + p1gameswon + " rounds";
-                }
-                if (currentMarker === "O") {
-                    document.getElementById("p2win").innerHTML = currentplayer + " Won " + p2gameswon + " rounds";
-                }
-                startNewGame();
-            }
-            else {
-                changePlayer();
-            }
-            if (clicksCount === 9 & winner === "") {
-                alert("TIED !");
-                tied++;
-                document.getElementById("tie").innerHTML = "Tied rounds : " + tied;
-                startNewGame();
-                throw new Error("OPPPSSS");
-            }
-            switchPlayers();
-        }
-        function changeText(id) {
-             alert("changetext");
-            if (id.innerHTML === "") {
-                //  currentMarker;
-
-                clickedArray[clicksCount] = id;
-                clicksCount = clicksCount + 1;
-                if (currentMarker === "X") {
-                    id.innerHTML = "X";
-
-
-                }
-                else {
-                    id.innerHTML = "O";
-                }
-
-            }
-        }
-        function updateScore(value) {
-
-            if (currentMarker === "X") {
-                playerXscore = playerXscore + value;
-            }
-            else {
-                playerOscore = playerOscore + value;
-            }
-
-        }
-        function switchPlayers() {
-
-            if (currentMarker === "X") {
-                currentMarker = "O";
-            }
-            else {
-                currentMarker = "X";
-            }
-//            document.getElementById("TEXTPLAYER").innerHTML = currentplayer + " Choose a square";
-        }
-        function check4winner(score) {
-            var i;
-            for (i = 0; i < winArray.length; i++) {
-                if ((winArray[i] & score) === winArray[i]) {
-                    if (currentMarker === "X") {
-                        winner = "X";
-                        p1gameswon = p1gameswon + 1;
-                    }
-                    else {
-                        winner = "O";
-                        p2gameswon = p2gameswon + 1;
-
-                    }
-                    i = 99;
-
-                }
-
-            }
-        }
-        function start() {
-
-            currentplayer = player1name;
-            document.getElementById("TEXTPLAYER").innerHTML = currentplayer + " Choose a square.";
-//            document.getElementById("p1info").innerHTML = player1name + " IS " + '<img src = "xv2.png" style ="height:100px; width: 100px" />';
-//            document.getElementById("p2info").innerHTML = player2name + " IS " + '<img src = "ov2.png" style ="height:100px; width: 100px" />';
-            document.getElementById("p1win").innerHTML =  " X Won " + p1gameswon + " rounds";
-            document.getElementById("p2win").innerHTML = player2name + " Won " + p1gameswon + " rounds";
-            document.getElementById("tie").innerHTML = "Tied rounds : " + tied;
-        }
-        function changePlayer() {
-            if (currentMarker === "X") {
-                currentplayer = player2name;
-            }
-            else {
-                currentplayer = player1name;
-            }
-        }
-        function startNewGame() {
-            winner = "";
-            playerXscore = 0;
-            playerOscore = 0;
-            var i = 0;
-            for (i = 0; i < clickedArray.length; i++) {
-                clickedArray[i].innerHTML = "";
-            }
-            if (currentplayer === player1name) {
-                currentplayer = player2name;
-            }
-            else {
-                currentplayer = player1name;
-
-            }
-            clicksCount = 0;
-            document.getElementById("TEXTPLAYER").innerHTML = currentplayer + " Choose a square";
-        }
-
-
-    </script>
-
-
 <ion-view title="TicTacToe" id="page7">
   <ion-content padding="true" class="has-header">
     <h1 id="ticTacToe-heading6" style="color:#000000;">TicTacToe</h1>
     <div id="ticTacToe-button-bar1" class="button-bar">
-        <button ng-controller="ticTacToeCtrl" id="ticTacToe-button10" class="button button-positive  button-outline" ng-click="playerMove(this, 1)" >[]</button>
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button11" class="button button-positive  button-outline" ng-click="playerMove(this, 2)">[]</button>
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button12" class="button button-positive  button-outline" ng-click="playerMove(this, 4)" >[]</button>
+      <button id="ticTacToe-button10" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button11" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button12" class="button button-positive  button-outline"></button>
     </div>
     <div id="ticTacToe-button-bar2" class="button-bar">
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button13" class="button button-positive  button-outline" ng-click="playerMove(this, 8)" >[]</button>
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button14" class="button button-positive  button-outline" ng-click="playerMove(this, 16)" >[]</button>
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button15" class="button button-positive  button-outline" ng-click=" playerMove(this, 32)">[]</button>
+      <button id="ticTacToe-button13" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button14" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button15" class="button button-positive  button-outline"></button>
     </div>
     <div id="ticTacToe-button-bar3" class="button-bar">
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button16" class="button button-positive  button-outline" ng-click="playerMove(this, 64)" >[]</button>
-      <button ng-controller="ticTacToeCtrl" id="ticTacToe-button17" class="button button-positive  button-outline" ng-click="playerMove(this, 128)">[]</button>
-      <button   ng-controller="ticTacToeCtrl" id="ticTacToe-button18" class="button button-positive  button-outline" ng-click="playerMove(this, 256)"></button>
+      <button id="ticTacToe-button16" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button17" class="button button-positive  button-outline"></button>
+      <button id="ticTacToe-button18" class="button button-positive  button-outline"></button>
     </div>
     <div class="spacer" style="height: 100px;"></div>
-    <a ui-sref="tabsController.landingPage" id="ticTacToe-button19" class="button button-positive  button-block">Home</a>
-<!--     <div class="table" >
-
-        <br>
-        <br>
-        <div class ="Row">
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 1)">A</div>
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 2)"></div>
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 4)"></div>
-        </div>
-        <div class ="Row">
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 8)"></div>
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 16)"></div>
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 32)"></div>
-        </div>
-        <div class ="Row">
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 64)"></div>
-            <div class = "Cell button button-positive  button-outline" onclick="playerMove(this, 128)"></div>
-            <div class = "Cell button button-positive  button-outline" ng-click="playerMove(this, 256)"></div>
-        </div>
-    </div></td>-->
-
+    <a ui-sref="tabsController.home" id="ticTacToe-button19" class="button button-positive  button-block">Home</a>
   </ion-content>
 </ion-view>
-

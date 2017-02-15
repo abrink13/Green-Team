@@ -8,7 +8,7 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('landingPageCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
@@ -48,7 +48,9 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('ticTacToeCtrl', ['$scope', '$stateParams', 
+.controller('ticTacToeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
 //
 //// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -57,7 +59,7 @@ function ($scope, $stateParams) {
         $scope.spice = 'very';
 // <button ng-click="jalapenoSpicy()">Jalapeño</button>
     $scope.jalapenoSpicy = function() {
-        $scope.spice = 'jalapeño';
+        $scope.spice = 'x';
     };
         var p1gameswon = 0;
         var p2gameswon = 0;
@@ -219,6 +221,23 @@ function ($scope, $stateParams) {
             clicksCount = 0;
             document.getElementById("TEXTPLAYER").innerHTML = currentplayer + " Choose a square";
         }
+
+}])
+ 
+   
+.controller('createAGameCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+
+}])
+   
+.controller('chutesAndLaddersCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
 
 }])
  

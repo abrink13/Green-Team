@@ -10,12 +10,12 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController.landingPage', {
+      .state('tabsController.home', {
     url: '/page2',
     views: {
       'tab1': {
-        templateUrl: 'templates/landingPage.html',
-        controller: 'landingPageCtrl'
+        templateUrl: 'templates/home.html',
+        controller: 'homeCtrl'
       }
     }
   })
@@ -62,6 +62,18 @@ angular.module('app.routes', [])
     url: '/page7',
     templateUrl: 'templates/ticTacToe.html',
     controller: 'ticTacToeCtrl'
+  })
+
+  .state('createAGame', {
+    url: '/page8',
+    templateUrl: 'templates/createAGame.html',
+    controller: 'createAGameCtrl'
+  })
+
+  .state('chutesAndLadders', {
+    url: '/page9',
+    templateUrl: 'templates/chutesAndLadders.html',
+    controller: 'chutesAndLaddersCtrl'
   })
 
 $urlRouterProvider.otherwise('/page5')
